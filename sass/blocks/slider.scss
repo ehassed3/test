@@ -25,17 +25,17 @@
   top: 100%;
   left: calc(50% - 25px);
 
-  &--2 {
+  &--berlin {
     margin-left: 25px;
   }
 
-  &--3 {
+  &--port {
     margin-left: 50px;
   }
 
-  &--1:checked ~ .slider__list .slider__slide--Sahara,
-  &--2:checked ~ .slider__list .slider__slide--Berlin,
-  &--3:checked ~ .slider__list .slider__slide--Port {
+  &--sahara:checked ~ .slider__list .slider__slide--sahara,
+  &--berlin:checked ~ .slider__list .slider__slide--berlin,
+  &--port:checked ~ .slider__list .slider__slide--port {
     display: flex;
   }
 }

@@ -158,7 +158,7 @@ gulp.task('build', function (done) {
     'delete',
     [
       'styleProduction',
-      'html',
+      'htmlProduction',
       'scripts',
       'vendor',
       'sprite'
