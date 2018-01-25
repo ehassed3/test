@@ -1,0 +1,41 @@
+.slider {
+  position: relative;
+
+  min-height: 460px;
+}
+
+.slider__list {
+  @include list-style-none;
+}
+
+.slider__slide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slider__description {
+  width: 50%;
+
+  text-align: center;
+}
+
+.slider__radio {
+  position: absolute;
+  top: 100%;
+  left: calc(50% - 25px);
+
+  &--2 {
+    margin-left: 25px;
+  }
+
+  &--3 {
+    margin-left: 50px;
+  }
+
+  &--1:checked ~ .slider__list .slider__slide--Sahara,
+  &--2:checked ~ .slider__list .slider__slide--Berlin,
+  &--3:checked ~ .slider__list .slider__slide--Port {
+    display: flex;
+  }
+}

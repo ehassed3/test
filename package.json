@@ -1,0 +1,56 @@
+{
+  "name": "Test",
+  "version": "1.0.0",
+  "description": "Test work",
+  "devDependencies": {
+    "@htmlacademy/editorconfig-cli": "1.x",
+    "autoprefixer": "7.1.x",
+    "browser-sync": "2.18.x",
+    "del": "^3.0.0",
+    "eslint": "^4.10.0",
+    "gulp": "3.9.x",
+    "gulp-csso": "^3.0.0",
+    "gulp-imagemin": "^3.4.0",
+    "gulp-plumber": "1.1.x",
+    "gulp-postcss": "7.0.x",
+    "gulp-pug": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "3.1.x",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-svgstore": "^6.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-webp": "^2.3.0",
+    "node-normalize-scss": "^3.0.0",
+    "picturefill": "^3.0.2",
+    "postcss-initial": "^2.0.0",
+    "postcss-inline-svg": "^3.0.0",
+    "run-sequence": "^2.2.0",
+    "stylelint": "8.3.x",
+    "stylelint-config-htmlacademy": "0.1.x",
+    "svg4everybody": "^2.1.9"
+  },
+  "scripts": {
+    "editorconfig": "editorconfig-cli",
+    "stylelint": "stylelint 'sass/**/*.scss' --syntax scss",
+    "eslint": "eslint js/**/*.js",
+    "test": "npm run editorconfig && npm run stylelint && npm run eslint",
+    "build": "gulp build",
+    "start": "gulp serve"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "IE 11",
+    "Firefox ESR"
+  ],
+  "editorconfig-cli": [
+    "*.html",
+    "*.json",
+    "*.js",
+    "js/**/*.js",
+    "img/**/*.svg",
+    "sass/**/*.{sass,scss}"
+  ],
+  "engines": {
+    "node": "8.2"
+  }
+}
