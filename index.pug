@@ -1,55 +1,12 @@
-doctype html
-html(lang="ru")
-  head
-    meta(name="viewport" content="width=device-width, initial-scale=1")
-    meta(charset="utf-8")
-    link(rel="stylesheet" href="css/style.css")
-    title Test
-  body
-    main(class="page-main")
-      h1(class="page-main__title") Рынок сахара
-      section(class="page-main__search search")
-        h2(class="visually-hidden") Поле поиска
-        form(class="search__form" method="get" action="#")
-          input(class="search__input" type="search" placeholder="Найди свой сахар!")
-          button(class="search__button") Поиск
+extends pug/layout/main
+block title
+  | Test
 
-      section(class="page-main__product product")
-        h2(class="visually-hidden") Таблица товаров
-        table(class="product__table")
-          tr(class="product__numbers")
-            th(class="product__data") Название
-            th(class="product__data") Цена
-            th(class="product__data") Качество
-            th(class="product__data") Город
-          tr(class="product__company")
-            td(class="product__data") Сахара
-            td(class="product__data") 100 Р/кг
-            td(class="product__data") Высшее
-            td(class="product__data") Москва
-          tr(class="product__company")
-            td(class="product__data") Берлин
-            td(class="product__data") 200 Р/кг
-            td(class="product__data") Среднее
-            td(class="product__data") Ивангород
-          tr(class="product__company")
-            td(class="product__data") Порт
-            td(class="product__data") 40 Р/кг
-            td(class="product__data") Низшее
-            td(class="product__data") Геленджик
+block main
+  main(class="page-main")
+    h1(class="page-main__title") Рынок сахара
+    include pug/modules/search
 
-      section(class="page-main__slider slider")
-        h2(class="visually-hidden") Слайдер
-        input(class="slider__radio slider__radio--1" type="radio" name="slider-radio" id="slider-radio-1" checked)
-        input(class="slider__radio slider__radio--2" type="radio" name="slider-radio" id="slider-radio-2")
-        input(class="slider__radio slider__radio--3" type="radio" name="slider-radio" id="slider-radio-3")
-        ul(class="slider__list")
-          li(class="slider__slide slider__slide--Sahara")
-            img(class="slider__img" src="img/sahara.jpg" alt="Сахар Сахары" width="450" height="300")
-            p(class="slider__description") Наша компания существует на рынке с 1854 года и является одной из ведущих в области производства сахара. Традиции, знания, и высокая компетенция позволяют нам создавать лучший продукт, который обязательно понравится и вам.
-          li(class="slider__slide slider__slide--Berlin")
-            img(class="slider__img" src="img/berlin.jpg" alt="Сахар Берлина" width="450" height="300")
-            p(class="slider__description") Мы предлагаем больше, чем ожидает потребитель. Наши продукты способны удивлять и вызывать привязанность.
-          li(class="slider__slide slider__slide--Port")
-            img(class="slider__img" src="img/port.jpg" alt="Сахар Порта" width="450" height="300")
-            p(class="slider__description") Очень многие люди обеспокоены – и не без основания – теми негативными последствиями для здоровья, которые вызывает чрезмерное употребление сахара. Покупая наш сахар вы сможете втрое сократить его потребление. Даже, возможно, отказаться от него вовсе.
+    include pug/modules/product
+
+    include pug/modules/slider
