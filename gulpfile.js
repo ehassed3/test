@@ -131,8 +131,7 @@ gulp.task('serve', ['styleDevelopment', 'htmlDevelopment', 'sprite'], function (
     ui: false
   });
 
-  gulp.watch('src/sass/**/*.{scss,sass}', ['styleDevelopment']);
-  gulp.watch('src/img/*.svg', ['styleDevelopment']);
+  gulp.watch(['src/blocks/**/*.{scss,sass}', 'src/sass/**/*.{scss,sass}', 'src/img/*.svg'], ['styleDevelopment']);
   gulp.watch('src/**/*.pug', ['htmlDevelopment']);
   gulp.watch('src/img/icons/icon-*.svg', ['sprite']);
 
