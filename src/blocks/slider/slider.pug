@@ -13,5 +13,5 @@ mixin slider
     ul(class="slider__list")
       each company in companies
         li(class="slider__slide slider__slide--" + company.name)
-          img(class="slider__img" src="img/" + company.name + ".jpg" alt=""+ company.alternative width="450" height="300")
+          img(class="slider__img" src="img/content/" + company.name + ".jpg" alt=""+ company.alternative width="450" height="300")
           p(class="slider__description")= company.description

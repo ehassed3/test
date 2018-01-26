@@ -42,7 +42,7 @@ gulp.task('copy', function () {
       'src/vendor/*'
     ],
     {
-      base: '.'
+      base: 'src'
     })
     .pipe(gulp.dest('build'));
 });
@@ -110,17 +110,6 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest('build/js'));
 });
 
-
-//Сваливаем в билд все полифилы
-gulp.task('vendor', function () {
-  return gulp.src([
-    'node_modules/svg4everybody/dist/svg4everybody.min.js',
-    'node_modules/picturefill/dist/picturefill.min.js'
-  ])
-    .pipe(gulp.dest('src/vendor'));
-});
-
-
 //Готовим svg-спрайт
 gulp.task('sprite', function () {
   return gulp.src('src/img/icons/icon-*.svg')
@@ -133,7 +122,7 @@ gulp.task('sprite', function () {
 
 
 //Девелопмент-сборка с live-reload
-gulp.task('serve', ['styleDevelopment', 'htmlDevelopment', 'sprite', 'vendor'], function () {
+gulp.task('serve', ['styleDevelopment', 'htmlDevelopment', 'sprite'], function () {
   server.init({
     server: 'src',
     notify: false,
@@ -160,7 +149,6 @@ gulp.task('build', function (done) {
       'styleProduction',
       'htmlProduction',
       'scripts',
-      'vendor',
       'sprite'
     ],
     'copy',
