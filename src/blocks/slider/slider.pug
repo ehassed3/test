@@ -1,0 +1,17 @@
+include slider.data.pug
+
+mixin slider
+  section(class="page-main__slider slider")
+    h2(class="visually-hidden") Слайдер
+
+    for company in companies
+      if company.name === "sahara"
+        input(class="slider__radio slider__radio--"+company.name type="radio" name="slider-radio" id="slider-radio-"+company.name checked)
+      else
+        input(class="slider__radio slider__radio--"+company.name type="radio" name="slider-radio" id="slider-radio-"+company.name)
+
+    ul(class="slider__list")
+      each company in companies
+        li(class="slider__slide slider__slide--" + company.name)
+          img(class="slider__img" src="img/" + company.name + ".jpg" alt=""+ company.alternative width="450" height="300")
+          p(class="slider__description")= company.description

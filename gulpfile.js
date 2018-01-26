@@ -37,9 +37,9 @@ gulp.task('delete', function () {
 //Копирует все нужные файлы в билд
 gulp.task('copy', function () {
   return gulp.src([
-      'fonts/**/*.{woff,woff2}',
-      'img/**/*',
-      'vendor/*'
+      'src/fonts/**/*.{woff,woff2}',
+      'src/img/**/*',
+      'src/vendor/*'
     ],
     {
       base: '.'
@@ -50,7 +50,7 @@ gulp.task('copy', function () {
 
 //Сборка стилей для продакшена
 gulp.task('styleProduction', function () {
-  return gulp.src('sass/style.scss')
+  return gulp.src('src/sass/style.scss')
     .pipe(sass({
       includePaths: require('node-normalize-scss').includePaths
     }))
@@ -69,7 +69,7 @@ gulp.task('styleProduction', function () {
 
 //Сборка стилей для разработки
 gulp.task('styleDevelopment', function () {
-  return gulp.src('sass/style.scss')
+  return gulp.src('src/sass/style.scss')
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(sass({
@@ -81,31 +81,31 @@ gulp.task('styleDevelopment', function () {
       initial()
     ]))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('css'))
+    .pipe(gulp.dest('src/css'))
     .pipe(server.stream());
 });
 
 //Сборка html из pug'a для продакшена
 gulp.task('htmlProduction', function () {
-  return gulp.src('*.pug')
+  return gulp.src('src/*.pug')
     .pipe(pug())
     .pipe(gulp.dest("build"))
 });
 
 //Сборка html из pug'a для разработки
 gulp.task('htmlDevelopment', function () {
-  return gulp.src('*.pug')
+  return gulp.src('src/*.pug')
     .pipe(plumber())
     .pipe(pug({
       pretty: true
     }))
-    .pipe(gulp.dest("."))
+    .pipe(gulp.dest("src"))
     .pipe(server.stream());
 });
 
 //Работаем со скриптами
 gulp.task('scripts', function () {
-  return gulp.src('js/**/*.js')
+  return gulp.src('src/js/**/*.js')
     .pipe(uglifyJS())
     .pipe(gulp.dest('build/js'));
 });
@@ -117,37 +117,37 @@ gulp.task('vendor', function () {
     'node_modules/svg4everybody/dist/svg4everybody.min.js',
     'node_modules/picturefill/dist/picturefill.min.js'
   ])
-    .pipe(gulp.dest('vendor'));
+    .pipe(gulp.dest('src/vendor'));
 });
 
 
 //Готовим svg-спрайт
 gulp.task('sprite', function () {
-  return gulp.src('img/icons/icon-*.svg')
+  return gulp.src('src/img/icons/icon-*.svg')
     .pipe(svgstore({
       inlineSvg: true
     }))
     .pipe(rename('sprite.svg'))
-    .pipe(gulp.dest('img/icons'))
+    .pipe(gulp.dest('src/img/icons'))
 });
 
 
 //Девелопмент-сборка с live-reload
 gulp.task('serve', ['styleDevelopment', 'htmlDevelopment', 'sprite', 'vendor'], function () {
   server.init({
-    server: '.',
+    server: 'src',
     notify: false,
     open: true,
     cors: true,
     ui: false
   });
 
-  gulp.watch('sass/**/*.{scss,sass}', ['styleDevelopment']);
-  gulp.watch('img/*.svg', ['styleDevelopment']);
-  gulp.watch('*.pug', ['htmlDevelopment']);
-  gulp.watch('img/icons/icon-*.svg', ['sprite']);
+  gulp.watch('src/sass/**/*.{scss,sass}', ['styleDevelopment']);
+  gulp.watch('src/img/*.svg', ['styleDevelopment']);
+  gulp.watch('src/**/*.pug', ['htmlDevelopment']);
+  gulp.watch('src/img/icons/icon-*.svg', ['sprite']);
 
-  gulp.watch('js/**/*.js')
+  gulp.watch('src/js/**/*.js')
     .on('change', server.reload);
 });
 
@@ -185,7 +185,7 @@ gulp.task('serveBuild', function () {
 
 //Оптимизируем изображения
 gulp.task('images', function () {
-  return gulp.src(['img/**/*.{png,jpg,svg}', '!img/icons/sprite.svg'])
+  return gulp.src(['src/img/**/*.{png,jpg,svg}', '!src/img/icons/sprite.svg'])
     .pipe(imagemin([
       imagemin.optipng({optimizationLevel: 3}),
       imagemin.jpegtran({progressive: true}),
@@ -195,15 +195,15 @@ gulp.task('images', function () {
         ]
       })
     ]))
-    .pipe(gulp.dest('img'));
+    .pipe(gulp.dest('src/img'));
 });
 
 
 //Создаем вебпи
 gulp.task('webp', function () {
-  return gulp.src('img/content/**/*.{png,jpg}')
+  return gulp.src('src/img/content/**/*.{png,jpg}')
     .pipe(webp({quality: 90}))
-    .pipe(gulp.dest('img/content'));
+    .pipe(gulp.dest('src/img/content'));
 });
 
 
